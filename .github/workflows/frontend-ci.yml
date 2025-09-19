@@ -25,8 +25,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20.19.4'
           cache: 'npm'
+
+      - name: Verify Node.js version
+        run: node -v
 
       - name: Install dependencies
         run: npm ci
@@ -41,6 +44,5 @@ jobs:
       # Optionally, build for web (Expo)
       - name: Build Expo web
         run: npm run build:web
-        continue-on-error: true
 
       # Optionally, you can upload build artifacts here if needed
