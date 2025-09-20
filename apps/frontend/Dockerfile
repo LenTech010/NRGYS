@@ -1,5 +1,5 @@
-# Use official Node image
-FROM node:18-alpine
+# Use official Node image (Node 20.19.4 for Expo/React Native 0.81+)
+FROM node:20.19.4-alpine
 
 WORKDIR /app
 
