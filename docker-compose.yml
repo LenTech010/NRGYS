@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./apps/frontend
+    container_name: stryve-frontend
+    ports:
+      - "8081:8081"   # Metro bundler (Expo)
+    working_dir: /app
+    volumes:
+      - ./apps/frontend:/app
+      - /app/node_modules   # Avoid overwriting node_modules inside container
+    command: npx expo start --tunnel
