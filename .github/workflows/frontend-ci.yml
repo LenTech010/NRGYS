@@ -39,16 +39,3 @@ jobs:
       # Optional: Run tests
       # - name: 🧪 Test
       #   run: npm test
-
-      # ✅ Expo OTA publish (optional)
-      - name: 🚀 Expo Publish (OTA)
-        if: github.ref == 'refs/heads/main'
-        run: npx expo publish --non-interactive
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-
-      # ✅ EAS Build trigger (optional)
-      # - name: 🏗️ EAS Build for Android
-      #   run: npx eas build --platform android --non-interactive
-      #   env:
-      #     EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
