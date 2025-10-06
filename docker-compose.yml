@@ -1,12 +1,15 @@
+# docker-compose.yml
+version: "3.8"
+
 services:
   frontend:
     build:
       context: ./apps/frontend
     container_name: stryve-frontend
     ports:
-      - "8081:8081"   # Metro bundler (Expo)
+      - "8081:8081"  # Metro bundler port
     working_dir: /app
     volumes:
-      - ./apps/frontend:/app
-      - /app/node_modules   # Prevent host from overwriting container's node_modules
-    command: npx expo start --lan --non-interactive
+      - ./apps/frontend:/app        # Mount source code
+      - /app/node_modules           # Avoid overwriting installed node_modules
+    command: sh -c "CI=0 npx expo start --tunnel"
