@@ -6,9 +6,6 @@ services:
     container_name: backend-container
     ports:
       - "3000:3000" # API endpoint exposed on localhost:3000
-    volumes:
-      - ./backend:/app # Sync the backend source code for development
-      # Removed empty /app/node_modules volume to prevent unwanted anonymous volumes
     environment:
       - NODE_ENV=development
 
@@ -35,6 +32,6 @@ services:
       EXPO_START_ARGS: ${EXPO_START_ARGS:-}
     volumes:
       - ./frontend:/app # Sync frontend folder for hot reloading
-      # Removed empty /app/node_modules volume to prevent unwanted anonymous volumes
+      - /app/node_modules # keep container-installed node_modules (prevents host mount from hiding them)
     stdin_open: true
     tty: true
