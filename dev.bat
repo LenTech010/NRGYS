@@ -30,3 +30,4 @@ echo Starting Docker containers...
 docker-compose up --build
 
 endlocal
+
