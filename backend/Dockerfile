@@ -7,14 +7,18 @@ WORKDIR /app
 # Copy dependency files
 COPY package.json package-lock.json ./
 
-# Install dependencies, including development dependencies
-RUN npm install
+# Ensure devDependencies (tsc, ts-node, etc.) are installed during build
+ENV NPM_CONFIG_PRODUCTION=false
+RUN npm install --include=dev
 
 # Copy all remaining source code
 COPY . .
 
+# Build TypeScript to JavaScript
+RUN npm run build
+
 # Expose port 3000 for the backend
 EXPOSE 3000
 
-# Use ts-node to run TypeScript directly
-CMD ["npx", "ts-node", "src/server.ts"]
+# Run compiled JavaScript
+CMD ["node", "dist/server.js"]
