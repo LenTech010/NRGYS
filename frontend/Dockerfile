@@ -4,7 +4,7 @@ FROM node:20-alpine
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy only the package.json and package-lock.json files first to leverage Docker caching
+# Copy only the package.json and package-lock. json files first to leverage Docker caching
 COPY package.json package-lock.json ./
 
 # Install project dependencies
@@ -20,4 +20,4 @@ EXPOSE 19001
 EXPOSE 19002
 
 # Start Metro Bundler
-CMD npx expo start $EXPO_START_ARGS
+CMD ["npx", "expo", "start"]
